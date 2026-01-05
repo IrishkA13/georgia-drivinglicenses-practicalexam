@@ -15,6 +15,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStreamReader;
+import java.nio.charset.StandardCharsets;
 import java.time.Duration;
 import java.util.List;
 import java.util.Properties;
@@ -29,9 +31,12 @@ public class FormFiller implements CommandLineRunner {
     }
 
     public void run(String[] args) {
+        String propertiesPath = args.length > 0 ? args[0] : "input.properties";
+
         Properties properties = new Properties();
-        try (FileInputStream fis = new FileInputStream("input.properties")) {
-            properties.load(fis);
+        try (FileInputStream fis = new FileInputStream(propertiesPath);
+             InputStreamReader reader = new InputStreamReader(fis, StandardCharsets.UTF_8)) {
+            properties.load(reader);
         } catch (IOException e) {
             throw new RuntimeException("Unable to read file input.properties", e);
         }
