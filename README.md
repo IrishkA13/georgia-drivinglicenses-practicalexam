@@ -15,3 +15,25 @@ screen every 1 hour.
 Заполните свои личные данные для записи на экзамен по вождению в файле input.properties.
 Скрипт проверяет наличие свободного времени для экзамена каждые 5 секунд. 
 Бронирование ожидает оплаты в течение 1 часа. Вам необходимо проверять экран компьютера каждый 1 час.
+
+------------------------------------------------------------------
+ДЛЯ РАЗРАБОТЧИКОВ
+------------------------------------------------------------------
+MAC
+------------------------------------------------------------------
+jpackage \
+--input target \
+--name GeorgiaDrivingExam \
+--main-jar georgia-drivinglicenses-practicalexam-1.0.jar \
+--type app-image
+
+Run in console/Запуск в консоли:
+GeorgiaDrivingExam.app/Contents/MacOS/GeorgiaDrivingExam
+------------------------------------------------------------------
+Windows
+------------------------------------------------------------------
+jpackage ^
+--input target ^
+--name GeorgiaDrivingExam ^
+--main-jar georgia-drivinglicenses-practicalexam-1.0.jar ^
+--type exe

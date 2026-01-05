@@ -1,3 +1,5 @@
+package georgia.driving;
+
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
@@ -7,6 +9,9 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.springframework.boot.CommandLineRunner;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -14,10 +19,16 @@ import java.time.Duration;
 import java.util.List;
 import java.util.Properties;
 
-public class FormFiller {
+@SpringBootApplication
+public class FormFiller implements CommandLineRunner {
+
     private static final String URL = "https://my.sa.gov.ge/drivinglicenses/practicalexam";
 
     public static void main(String[] args) {
+        SpringApplication.run(FormFiller.class, args);
+    }
+
+    public void run(String[] args) {
         Properties properties = new Properties();
         try (FileInputStream fis = new FileInputStream("input.properties")) {
             properties.load(fis);
